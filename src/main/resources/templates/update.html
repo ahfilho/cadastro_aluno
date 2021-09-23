@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+<title>CRUD EXEMPLO</title>
+
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div class="container my-5">
+		<h4>Modificar produto</h4>
+		<div class="card">
+			<div class="card-body">
+			<form action="#" th:action="@{/produtos/update/{id}(id=${protudo.id})}" th:object="${produto}" method="post">
+						<div class="row">
+							<div class="form-group col-md-8">
+								<label for="nome" class="col-for-label">Nome</label> <input
+									type="text" th:field="*{nome}" class="form-control" id="nome"
+									placeholder="Nome"> <span th:if="${fields.hasErros('nome')}" th:errors="*{nome}" class="text-danger"></span>
+
+							</div>
+							<div class="form-group col-md-8">
+
+								<label for="fabricante" class="col-for-label">Fabricante</label>
+								<input type="text" th:field="*{fabricante}" class="form-control"
+									id="fabricante" placeholder="Fabricante:">
+									<span th:if="${fields.hasErros('fabricante')}" th:errors="*{fabricante}" class="text-danger"></span>
+							</div>
+
+							<div class="form-group col-md-8">
+
+								<label for="modelo" class="col-for-label">Modelo</label> <input
+									type="text" th:field="*{modelo}" class="form-control"
+									id="modelo" placeholder="Modelo:">
+									<span th:if="${fields.hasErros('modelo')}" th:errors="*{modelo}" class="text-danger"></span>
+									
+							</div>
+							<div class="form-group col-md-8">
+
+								<label for="quantidade" class="col-for-label">Quantidade</label>
+								<input type="text" th:field="*{quantidade}" class="form-control"
+									id="quantidade" placeholder="Quantidade:">
+									<span th:if="${fields.hasErros('quantidade')}" th:errors="*{quantidade}" class="text-danger"></span>
+									
+							</div>
+
+							<div class="form-group col-md-8">
+								<label for="precoEntrada" class="col-for-label">Preço
+									entrada:</label> <input type="text" th:field="*{precoEntrada}"
+									class="form-control" id="precoEntrada"
+									placeholder="Preço entrada:">
+									<span th:if="${fields.hasErros('precoEntrada')}" th:errors="*{precoEntrada}" class="text-danger"></span>
+									
+							</div>
+							<div class="form-group col-md-8">
+
+								<label for="precoSaida" class="col-for-label">Preço
+									saída:</label> <input type="text" th:field="*{precoSaida}"
+									class="form-control" id="precoSaida" placeholder="Preço saída:">
+									<span th:if="${fields.hasErros('precoSaida')}" th:errors="*{precoSaida}" class="text-danger"></span>
+									
+
+							</div>
+							<div class="form-group col-md-6"></div>
+							<input type="submit" class="btn btn-primary"
+								value="Atualizar Produto">
+						</div>
+					</form>
+			
+		</div>
+		</div>
+		</div>
+	
+
+
+
+</body>
+
+</html>
