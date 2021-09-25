@@ -44,66 +44,75 @@
 		<h4>Modificar produto</h4>
 		<div class="card">
 			<div class="card-body">
-			<form action="#" th:action="@{/produtos/update/{id}(id=${protudo.id})}" th:object="${produto}" method="post">
-						<div class="row">
-							<div class="form-group col-md-8">
-								<label for="nome" class="col-for-label">Nome</label> <input
-									type="text" th:field="*{nome}" class="form-control" id="nome"
-									placeholder="Nome"> <span th:if="${fields.hasErros('nome')}" th:errors="*{nome}" class="text-danger"></span>
+				<form action="#"
+					th:action="@{/produtos/update/{id}(id=${protudo.id})}"
+					th:object="${produto}" method="post">
+					<div class="row">
+						<div class="form-group col-md-8">
+							<label for="nome" class="col-for-label">Nome</label> <input
+								type="text" th:field="*{nome}" class="form-control" id="nome"
+								placeholder="Nome"> <span
+								th:if="${fields.hasErros('nome')}" th:errors="*{nome}"
+								class="text-danger"></span>
 
-							</div>
-							<div class="form-group col-md-8">
-
-								<label for="fabricante" class="col-for-label">Fabricante</label>
-								<input type="text" th:field="*{fabricante}" class="form-control"
-									id="fabricante" placeholder="Fabricante:">
-									<span th:if="${fields.hasErros('fabricante')}" th:errors="*{fabricante}" class="text-danger"></span>
-							</div>
-
-							<div class="form-group col-md-8">
-
-								<label for="modelo" class="col-for-label">Modelo</label> <input
-									type="text" th:field="*{modelo}" class="form-control"
-									id="modelo" placeholder="Modelo:">
-									<span th:if="${fields.hasErros('modelo')}" th:errors="*{modelo}" class="text-danger"></span>
-									
-							</div>
-							<div class="form-group col-md-8">
-
-								<label for="quantidade" class="col-for-label">Quantidade</label>
-								<input type="text" th:field="*{quantidade}" class="form-control"
-									id="quantidade" placeholder="Quantidade:">
-									<span th:if="${fields.hasErros('quantidade')}" th:errors="*{quantidade}" class="text-danger"></span>
-									
-							</div>
-
-							<div class="form-group col-md-8">
-								<label for="precoEntrada" class="col-for-label">Preço
-									entrada:</label> <input type="text" th:field="*{precoEntrada}"
-									class="form-control" id="precoEntrada"
-									placeholder="Preço entrada:">
-									<span th:if="${fields.hasErros('precoEntrada')}" th:errors="*{precoEntrada}" class="text-danger"></span>
-									
-							</div>
-							<div class="form-group col-md-8">
-
-								<label for="precoSaida" class="col-for-label">Preço
-									saída:</label> <input type="text" th:field="*{precoSaida}"
-									class="form-control" id="precoSaida" placeholder="Preço saída:">
-									<span th:if="${fields.hasErros('precoSaida')}" th:errors="*{precoSaida}" class="text-danger"></span>
-									
-
-							</div>
-							<div class="form-group col-md-6"></div>
-							<input type="submit" class="btn btn-primary"
-								value="Atualizar Produto">
 						</div>
-					</form>
-			
+						<div class="form-group col-md-8">
+
+							<label for="fabricante" class="col-for-label">Fabricante</label>
+							<input type="text" th:field="*{fabricante}" class="form-control"
+								id="fabricante" placeholder="Fabricante:"> <span
+								th:if="${fields.hasErros('fabricante')}"
+								th:errors="*{fabricante}" class="text-danger"></span>
+						</div>
+
+						<div class="form-group col-md-8">
+
+							<label for="modelo" class="col-for-label">Modelo</label> <input
+								type="text" th:field="*{modelo}" class="form-control"
+								id="modelo" placeholder="Modelo:"> <span
+								th:if="${fields.hasErros('modelo')}" th:errors="*{modelo}"
+								class="text-danger"></span>
+
+						</div>
+						<div class="form-group col-md-8">
+
+							<label for="quantidade" class="col-for-label">Quantidade</label>
+							<input type="text" th:field="*{quantidade}" class="form-control"
+								id="quantidade" placeholder="Quantidade:"> <span
+								th:if="${fields.hasErros('quantidade')}"
+								th:errors="*{quantidade}" class="text-danger"></span>
+
+						</div>
+
+						<div class="form-group col-md-8">
+							<label for="precoEntrada" class="col-for-label">Preço
+								entrada:</label> <input type="text" th:field="*{precoEntrada}"
+								class="form-control" id="precoEntrada"
+								placeholder="Preço entrada:"> <span
+								th:if="${fields.hasErros('precoEntrada')}"
+								th:errors="*{precoEntrada}" class="text-danger"></span>
+
+						</div>
+						<div class="form-group col-md-8">
+
+							<label for="precoSaida" class="col-for-label">Preço
+								saída:</label> <input type="text" th:field="*{precoSaida}"
+								class="form-control" id="precoSaida" placeholder="Preço saída:">
+							<span th:if="${fields.hasErros('precoSaida')}"
+								th:errors="*{precoSaida}" class="text-danger"></span>
+
+
+						</div>
+						<div class="form-group col-md-6"></div>
+						<input type="submit" class="btn btn-primary"
+							value="Atualizar Produto">
+					</div>
+				</form>
+
+			</div>
 		</div>
-		</div>
-		</div>
-	
+	</div>
+
 
 
 

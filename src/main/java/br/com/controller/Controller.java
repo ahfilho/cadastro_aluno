@@ -10,23 +10,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.model.Produto;
 import br.com.repository.Repository;
 
 @org.springframework.stereotype.Controller
-@RequestMapping("/produtos")
+//@RequestMapping(value="/produtos",method= RequestMethod.GET)
+@RequestMapping("/produtos/")
+
 public class Controller {
 
 	@Autowired
 	private Repository reposit;
 
 	@GetMapping("showform")
-	public String showProdutoForm() {
-		return "Add-produto";
+	public String showProdutoForm(Produto produto) {
+		return "add-produto";
 	}
 
-	@GetMapping("list")
+	@GetMapping("/list")
 	public String produtos(Model model) {
 		model.addAttribute("produtos", this.reposit.findAll());
 		return "index";
@@ -46,7 +49,7 @@ public class Controller {
 		Produto produto = this.reposit.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException(" produto invalido" + id));
 		model.addAttribute("produto", produto);
-		return "atuliza-produto";
+		return "update";
 	}
 
 	@DeleteMapping("/del/{id}")
@@ -56,14 +59,14 @@ public class Controller {
 
 		this.reposit.delete(produto);
 		model.addAttribute("produto", this.reposit.findAll());
-		return "indext";
+		return "index";
 	}
 
-	@GetMapping("atualiza/{id")
+	@PostMapping("atualiza/{id")
 	public String atualizaProduto(@PathVariable("id") long id, Produto produto, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			produto.setId(id);
-			return "atualiza-produto";
+			return "update";
 		}
 		// atualiza produto
 		reposit.save(produto);
