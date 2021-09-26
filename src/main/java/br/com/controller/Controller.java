@@ -52,7 +52,7 @@ public class Controller {
 		return "update";
 	}
 
-	@DeleteMapping("/del/{id}")
+	@GetMapping("/del/{id}")
 	public String deleta(@PathVariable("id") long id, Model model) {
 		Produto produto = this.reposit.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("produto nao existe" + id));
