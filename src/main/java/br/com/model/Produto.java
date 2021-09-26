@@ -40,5 +40,7 @@ public class Produto {
 
 	@Column(name = "precoSaida")
 	private double precoSaida;
+	
+	
 
 }

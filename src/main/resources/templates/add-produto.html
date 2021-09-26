@@ -24,36 +24,43 @@
 </head>
 
 <body>
-	<div class="container my-5">
+<div class="botao">
+			<input type="button"  th:action="@{/produtos/list}"
+						th:object="${produto}" style="margin-left: 9%; margin-top: 3%" class="btn btn-primary"
+				value="Listar">
+		</div>
+	<div class="container my-3">
 		<h4>Adicionar novo</h4>
 		<div class="card">
 			<div class="card-body">
 				<div class="col-md-10">
-					<form action="#" th:action="@{/produtos/add}" th:object="${produto}" method="post">
+					<form action="#" th:action="@{/produtos/add}"
+						th:object="${produto}" method="post">
 						<div class="row">
-						<div class="form-group col-md-8">
-							<label for="nome" class="col-form-label">Nome</label> <input
-							type="text" th:field="*{nome}" class="form-control" id="nome" placeholder="Nome"> 
-<span
+							<div class="form-group col-md-8">
+								<label for="nome" class="col-form-label">Cliente</label> <input
+									type="text" th:field="*{nome}" class="form-control" id="nome"
+									placeholder="Nome"> <span
 									th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"
 									class="text-danger"></span>
 
 							</div>
-							<div class="form-group col-md-8">
+							<br>
+							<div class="form-group col-md-5">
 
 								<label for="fabricante" class="col-for-label">Fabricante</label>
 								<input type="text" th:field="*{fabricante}" class="form-control"
 									id="fabricante" placeholder="Fabricante:">
 							</div>
 
-							<div class="form-group col-md-8">
+							<div class="form-group col-md-5">
 
 								<label for="modelo" class="col-for-label">Modelo</label> <input
 									type="text" th:field="*{modelo}" class="form-control"
-									id="modelo" placeholder="Modelo:"> 
+									id="modelo" placeholder="Modelo:">
 
 							</div>
-							<div class="form-group col-md-8">
+							<div class="form-group col-md-2">
 
 								<label for="quantidade" class="col-for-label">Quantidade</label>
 								<input type="text" th:field="*{quantidade}" class="form-control"
@@ -61,19 +68,19 @@
 
 							</div>
 
-							<div class="form-group col-md-8">
+							<div class="form-group col-md-3">
 								<label for="precoEntrada" class="col-for-label">Preço
 									entrada:</label> <input type="text" th:field="*{precoEntrada}"
 									class="form-control" id="precoEntrada"
-									placeholder="Preço entrada:"> 
+									placeholder="Preço entrada:">
 
 							</div>
-							<div class="form-group col-md-8">
+							<div class="form-group col-md-3">
 
 								<label for="precoSaida" class="col-for-label">Preço
 									saída:</label> <input type="text" th:field="*{precoSaida}"
 									class="form-control" id="precoSaida" placeholder="Preço saída:">
-								
+
 
 
 
