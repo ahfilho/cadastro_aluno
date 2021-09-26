@@ -62,7 +62,7 @@ public class Controller {
 		return "index";
 	}
 
-	@PostMapping("atualiza/{id")
+	@PostMapping("atualiza/{id}")
 	public String atualizaProduto(@PathVariable("id") long id, Produto produto, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			produto.setId(id);
