@@ -5,84 +5,39 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>CRUD EXEMPLO</title>
-
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link rel="stylesheet"
-	href="path/to/font-awesome/css/font-awesome.min.css">
 
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-<!-- Bootstrap CSS -->
+<title>Entrar</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+
 </head>
 <body>
+</head>
 
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<body>
+	<div class="logo" style="texto-align:center; margin-left:40%">
+
+		<h2>Arlindo Filho</h2>
 	
-</head>
 
-<body>
-	<div class="container my-2">
-		<h4>OPÇÕES</h4>
-		<div class="card">
-			<div class="card-body">
-				<div th:switch="${produtos}" class="container my-6">
-					<p class="my-5">
-						<a href="/produtos/showform" class="btn btn-primary"> <i
-							class="fas fa-user-plus ml-2"> Add novo</i></a>
-					</p>
-					<div class="col-md-10">
-						<h3 th:case="NULL">Sem produtos aqui</h3>
-						<div th:case="*">
-							<table class="table table-striped table-responsive-md">
-								<thead>
-									<tr>
-										<th>Id:</th>
-										<th>Nome:</th>
-										<th>Fabricante:</th>
-										<th>Modelo:</th>
-										<th>Quantidade:</th>
-										<th>Preço Entrada:</th>
-										<th>Preço Saída:</th>
-									</tr>
-								</thead>
-								</tbody>
-								<tr th:each="produto: ${produtos}">
-									<td th:text="${produto.id}"></td>
-								
-									<td th:text="${produto.nome}"></td>
-									<td th:text="${produto.fabricante}"></td>
-									<td th:text="${produto.modelo}"></td>
-									<td th:text="${produto.quantidade}"></td>
-									<td th:text="${produto.precoEntrada}"></td>
-									<td th:text="${produto.precoSaida}"></td>
+	<p>Gerenciador de PCs consertados</p>
+	<div class="botoes">
 
-									<td><a th:href="@{/produtos/edit/{id}(id=${produto.id})}"
-										class="btn btn-primary">Editar<i class="fas fa-user-edit ml-2"></i></a></td>
-									<td><a th:href="@{/produtos/del/{id}(id=${produto.id})}"
-										class="btn btn-primary">Excluir<i class="fas fa-user-times ml-2"></i></a></td>
+		<a class="btn btn-primary" href="#" role="button">Novo</a>
 
-								</tr>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
+		<button class="btn btn-primary" type="submit">Cadastrados</button>
+		<button class="btn btn-primary" type="submit">Login</button>
 	</div>
-
-
-
-
+</div>
 
 </body>
 

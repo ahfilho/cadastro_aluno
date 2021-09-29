@@ -16,16 +16,28 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Table(name = "produtos")
-public class Produto {
+@Table(name = "pcCliente")
+public class Pc {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "nome")
-	private String nome;
+	@Column(name = "cliente")
+	private String cliente;
+	
+	@Column(name = "cpf")
+	private int cpf;
 
+	@Column(name = "telefone")
+	private int telefone;
+	
+	@Column(name = "cidade")
+	private String cidade;
+	
+	@Column(name="maquina")
+	private String maquina;
+	
 	@Column(name = "fabricante")
 	private String fabricante;
 
@@ -35,12 +47,14 @@ public class Produto {
 	@Column(name = "quantidade")
 	private int quantidade;
 
-	@Column(name = "precoEntrada")
-	private double precoEntrada;
+	@Column(name = "problemaPc")
+	private String problemaPc;
 
-	@Column(name = "precoSaida")
-	private double precoSaida;
-	
+	@Column(name = "reparo")
+	private String reparo;
+
+	@Column(name = "valorReparo")
+	private int valorReparo;
 	
 
 }
