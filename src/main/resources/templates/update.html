@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-<title>CRUD EXEMPLO</title>
+<title>Alteração</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -25,18 +25,20 @@
 
 <body>
 	<div class="container my-5">
-		<h4>Adicionar novo</h4>
+
+		<h4>Alteração</h4>
 		<div class="card">
 			<div class="card-body">
 				<div class="col-md-10">
-				
-				
-					<form action="#" th:action="@{/pcs/atualiza/{id}(id=${pc.id})}" th:object="${pc}" method="post">
-				<div class="row">
+
+
+					<form action="#" th:action="@{/pcs/atualiza/{id}(id=${pc.id})}"
+						th:object="${pc}" method="post">
+						<div class="row">
 							<div class="form-group col-md-8">
 								<label for="cliente" class="col-form-label">Cliente</label> <input
-									type="text" th:field="*{cliente}" class="form-control" id="cliente"
-									placeholder="Nome Cliente"> <span
+									type="text" th:field="*{cliente}" class="form-control"
+									id="cliente" placeholder="Nome Cliente"> <span
 									th:if="${#fields.hasErrors('cliente')}" th:errors="*{cliente}"
 									class="text-danger"></span>
 
@@ -44,27 +46,27 @@
 							<br>
 							<div class="form-group col-md-3">
 
-								<label for="cpf" class="col-for-label">CPF
-									</label> <input type="text" th:field="*{cpf}"
-									class="form-control" id="cpf" placeholder="CPF">
+								<label for="cpf" class="col-for-label">CPF </label> <input
+									type="text" th:field="*{cpf}" class="form-control" id="cpf"
+									placeholder="CPF">
 							</div>
 							<div class="form-group col-md-3">
 
-								<label for="telefone" class="col-for-label">Telefone
-									</label> <input type="text" th:field="*{telefone}"
-									class="form-control" id="telefone" placeholder="Telefone">
+								<label for="telefone" class="col-for-label">Telefone </label> <input
+									type="text" th:field="*{telefone}" class="form-control"
+									id="telefone" placeholder="Telefone">
 							</div>
 							<div class="form-group col-md-3">
 
-								<label for="cidade" class="col-for-label">Cidade
-									</label> <input type="text" th:field="*{cidade}"
-									class="form-control" id="cidade" placeholder="Cidade">
+								<label for="cidade" class="col-for-label">Cidade </label> <input
+									type="text" th:field="*{cidade}" class="form-control"
+									id="cidade" placeholder="Cidade">
 							</div>
 							<div class="form-group col-md-3">
 
-								<label for="maquina" class="col-for-label">Máquina
-									</label> <input type="text" th:field="*{maquina}"
-									class="form-control" id="maquina" placeholder="Máquina">
+								<label for="maquina" class="col-for-label">Máquina </label> <input
+									type="text" th:field="*{maquina}" class="form-control"
+									id="maquina" placeholder="Máquina">
 							</div>
 							<div class="form-group col-md-5">
 
@@ -73,7 +75,7 @@
 									id="fabricante" placeholder="Fabricante:">
 							</div>
 
-							
+
 							<div class="form-group col-md-5">
 
 								<label for="modelo" class="col-for-label">Modelo:</label> <input
@@ -88,35 +90,39 @@
 									id="quantidade" placeholder="Quantidade:">
 
 							</div>
-							
-							
+
+
 
 							<div class="form-group col-md-3">
-								<label for="problemaPC" class="col-for-label">Problema apresentado:
-									</label> <input type="text" th:field="*{problemaPc}"
+								<label for="problemaPC" class="col-for-label">Problema
+									apresentado: </label> <input type="text" th:field="*{problemaPc}"
 									class="form-control" id="problemaPc"
 									placeholder="Descreva o problema">
 
 							</div>
 							<div class="form-group col-md-5">
 
-								<label for="reparo" class="col-for-label">Reparo</label>
-								<input type="text" th:field="*{reparo}" class="form-control"
+								<label for="reparo" class="col-for-label">Reparo</label> <input
+									type="text" th:field="*{reparo}" class="form-control"
 									id="reparo" placeholder="Reparo:">
 							</div>
 
 							<div class="form-group col-md-5">
 
-								<label for="valorReparo" class="col-for-label">Valor Reparo:</label>
-								<input type="text" th:field="*{valorReparo}" class="form-control"
-									id="valorReparo" placeholder="Valor do reparo">
+								<label for="valorReparo" class="col-for-label">Valor
+									Reparo:</label> <input type="text" th:field="*{valorReparo}"
+									class="form-control" id="valorReparo"
+									placeholder="Valor do reparo">
 							</div>
 
 
-							</div>
-							<div class="form-group col-md-6"></div>
-							<input type="submit" class="btn btn-primary"
-								value="Atualizar">
+						</div>
+						<div class="form-group col-md-6"></div>
+						<input type="submit" class="btn btn-primary" value="Atualizar">
+
+						<a href="/pcs/list" class="btn btn-danger"> <i>Cancelar</i></a>
+
+
 					</form>
 				</div>
 			</div>
