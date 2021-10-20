@@ -1,3 +1,4 @@
+s
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -32,95 +33,71 @@
 				<div class="col-md-10">
 
 
-					<form action="#" th:action="@{/pcs/atualiza/{id}(id=${pc.id})}"
-						th:object="${pc}" method="post">
+					<form action="#"
+						th:action="@{/estudantes/atualiza/{id}(id=${estudante.id})}"
+						th:object="${estudante}" method="post">
 						<div class="row">
 							<div class="form-group col-md-8">
-								<label for="cliente" class="col-form-label">Cliente</label> <input
-									type="text" th:field="*{cliente}" class="form-control"
-									id="cliente" placeholder="Nome Cliente"> <span
-									th:if="${#fields.hasErrors('cliente')}" th:errors="*{cliente}"
+								<label for="usuario" class="col-form-label">Estudante</label> <input
+									type="text" th:field="*{usuario}" class="form-control"
+									id="usuario" placeholder="Nome completo"> <span
+									th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}"
 									class="text-danger"></span>
+
 
 							</div>
 							<br>
+							<div class="form-group col-md-10">
+
+<label for="nomeDocumento" class="col-form-label">Documento</label><br>
+								<input type="file" name="nomeDocumento" id="nomeDocumento" multiple="multiple"><br>
+								<input type="reset" value="Apagar">
+								<input type="text" th:field="*{nomeDocumento}"
+									class="form-control" id="nomeDocumento"
+									placeholder="Nome do documento"> <span
+									th:if="${#fields.hasErrors('nomeDocumento')}"
+									th:errors="*{nomeDocumento}" class="text-danger"></span>
+
+
+
+							</div>
+
 							<div class="form-group col-md-3">
 
-								<label for="cpf" class="col-for-label">CPF </label> <input
-									type="text" th:field="*{cpf}" class="form-control" id="cpf"
-									placeholder="CPF">
+								<label for="atividadeCertificado" class="col-for-label">Atividade</label>
+								<input type="text" th:field="*{atividadeCertificado}"
+									class="form-control" id="atividadeCertificado"
+									placeholder="atividadeCertificado">
 							</div>
 							<div class="form-group col-md-3">
 
-								<label for="telefone" class="col-for-label">Telefone </label> <input
-									type="text" th:field="*{telefone}" class="form-control"
-									id="telefone" placeholder="Telefone">
+								<label for="horas" class="col-for-label">Horas </label> <input
+									type="text" th:field="*{horas}" class="form-control" id="horas"
+									placeholder="Horas">
 							</div>
 							<div class="form-group col-md-3">
 
-								<label for="cidade" class="col-for-label">Cidade </label> <input
-									type="text" th:field="*{cidade}" class="form-control"
-									id="cidade" placeholder="Cidade">
-							</div>
-							<div class="form-group col-md-3">
 
-								<label for="maquina" class="col-for-label">Máquina </label> <input
-									type="text" th:field="*{maquina}" class="form-control"
-									id="maquina" placeholder="Máquina">
-							</div>
-							<div class="form-group col-md-5">
-
-								<label for="fabricante" class="col-for-label">Fabricante</label>
-								<input type="text" th:field="*{fabricante}" class="form-control"
-									id="fabricante" placeholder="Fabricante:">
+								<div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="status"> <label
+										class="form-check-label" for="status1"> Homologado </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio"
+										name="flexRadioDefault" id="status2" checked> <label
+										class="form-check-label" for="status2"> Não-Homologado
+									</label>
+								</div>
 							</div>
 
-
-							<div class="form-group col-md-5">
-
-								<label for="modelo" class="col-for-label">Modelo:</label> <input
-									type="text" th:field="*{modelo}" class="form-control"
-									id="modelo" placeholder="Modelo:">
-
-							</div>
-							<div class="form-group col-md-2">
-
-								<label for="quantidade" class="col-for-label">Quantidade:</label>
-								<input type="text" th:field="*{quantidade}" class="form-control"
-									id="quantidade" placeholder="Quantidade:">
-
-							</div>
-
-
-
-							<div class="form-group col-md-3">
-								<label for="problemaPC" class="col-for-label">Problema
-									apresentado: </label> <input type="text" th:field="*{problemaPc}"
-									class="form-control" id="problemaPc"
-									placeholder="Descreva o problema">
-
-							</div>
-							<div class="form-group col-md-5">
-
-								<label for="reparo" class="col-for-label">Reparo</label> <input
-									type="text" th:field="*{reparo}" class="form-control"
-									id="reparo" placeholder="Reparo:">
-							</div>
-
-							<div class="form-group col-md-5">
-
-								<label for="valorReparo" class="col-for-label">Valor
-									Reparo:</label> <input type="text" th:field="*{valorReparo}"
-									class="form-control" id="valorReparo"
-									placeholder="Valor do reparo">
-							</div>
 
 
 						</div>
 						<div class="form-group col-md-6"></div>
 						<input type="submit" class="btn btn-primary" value="Atualizar">
 
-						<a href="/pcs/list" class="btn btn-danger"> <i>Cancelar</i></a>
+						<a href="/estudantes/list" class="btn btn-danger"> <i>Cancelar</i></a>
 
 
 					</form>

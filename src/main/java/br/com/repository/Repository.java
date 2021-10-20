@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.model.Pc;
+import br.com.model.Estudante;
 
-public interface Repository extends JpaRepository<Pc, Long>{
-	List<Pc> findByCliente(String cliente);
-
+public interface Repository extends JpaRepository<Estudante, Long>{
+	//List<Estudante> findByEstudante(String usuario);
 }

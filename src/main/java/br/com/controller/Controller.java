@@ -1,6 +1,7 @@
 package br.com.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -11,12 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import br.com.model.Pc;
+import br.com.model.Estudante;
 import br.com.repository.Repository;
 
 @org.springframework.stereotype.Controller
-//@RequestMapping(value="/produtos",method= RequestMethod.GET)
-@RequestMapping("/pcs/")
+@RequestMapping("/estudantes/")
 
 public class Controller {
 
@@ -29,54 +29,67 @@ public class Controller {
 	}
 
 	@GetMapping("showform")
-	public String showPcForm(Pc pc) {
+	public String showPcForm(Estudante estudante) {
 		return "add-pc";
 	}
 
 	@GetMapping("/list")
-	public String pcs(Model model) {
-		model.addAttribute("pcs", this.reposit.findAll());
+	public String listaEstudantes(Model model) {
+		model.addAttribute("estudantes", this.reposit.findAll());
 		return "list";
 	}
 
 	@PostMapping("/add")
-	public String addPc(@Validated Pc pc, BindingResult result, Model model) {
+	public String addPc(@Validated Estudante estudante, BindingResult result, Model model) {
+	estudante.getUsuario();
 		if (result.hasErrors()) {
 			return "add-pc";
-		}
-		this.reposit.save(pc);
+}
+		this.reposit.save(estudante);
 		return "redirect:list";
 	}
+	@GetMapping("pesquisa")
+	public String pesquisa() {
+		return "pesquisaId";
+	}
 
+	@GetMapping("pesquisaId/{id}")
+	public String pesquisaId(@PathVariable("id") long id, Model model) {
+		Estudante estudante = this.reposit.findById(id).orElseThrow(() -> new IllegalArgumentException("ID NÃO ENCONTRADO"+id));
+				model.addAttribute("estudante",estudante);
+				return "pesquisaId";
+
+	}
+	
 	@GetMapping("edit/{id}")
 	public String showUpdateForm(@PathVariable("id") long id, Model model) {
-		Pc pc = this.reposit.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException(" pc invalido" + id));
-		model.addAttribute("pc", pc);
+		Estudante estudante = this.reposit.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException(" estudante invalido" + id));
+		model.addAttribute("estudante", estudante);
 		return "update";
 	}
 
 	@GetMapping("/del/{id}")
 	public String deletaPc(@PathVariable("id") long id, Model model) {
-		Pc pc = this.reposit.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("Este PC não está aqui." + id));
+		Estudante estudante = this.reposit.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Este estudante não está aqui." + id));
 
-		this.reposit.delete(pc);
-		model.addAttribute("pc", this.reposit.findAll());
+		this.reposit.delete(estudante);
+		model.addAttribute("estudante", this.reposit.findAll());
 		return "list";
 	}
 
 	@PostMapping("atualiza/{id}")
-	public String atualizaPc(@PathVariable("id") long id, Pc pc, BindingResult result, Model model) {
+	public String atualizaPc(@PathVariable("id") long id, Estudante estudante, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-			pc.setId(id);
+			estudante.setId(id);
 			return "update";
 		}
 		// atualiza produto
-		reposit.save(pc);
+		reposit.save(estudante);
 
 		// pega todos os produtos atualizados
-		model.addAttribute("pcs", this.reposit.findAll());
+		model.addAttribute("estudantes", this.reposit.findAll());
 		return "list";
 
 	}
