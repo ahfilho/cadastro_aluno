@@ -1,11 +1,17 @@
 package br.com.controller;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.amqp.ConnectionFactoryCustomizer;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,7 +37,8 @@ import servico.Servico;
 @RequestMapping("/estudantes/")
 
 public class Controller {
-
+	
+	
 	@Autowired
 	private Repository reposit;
 
@@ -53,16 +60,43 @@ public class Controller {
 	}
 
 	@PostMapping("/add")
-	public String addPc(@Validated Estudante estudante, BindingResult result, Model model) {
+	public String add(@RequestParam("nomeDocumento") MultipartFile nomeDocumento, @Validated Estudante estudante, BindingResult result, Model model) throws IOException {
 		estudante.getAluno();
 		if (result.hasErrors()) {
 			return "add-pc";
 		}
-
+		 String fileName = nomeDocumento.getOriginalFilename();
+		 estudante.setDocName(fileName);
+		 estudante.setContent(nomeDocumento.getBytes()); 
+		 estudante.setTamanho(nomeDocumento.getSize());
+		 
 		this.reposit.save(estudante);
 		return "redirect:espera";
 	}
-
+	@GetMapping("/downloadfile")
+	public void downloadFile(@Param("id") Long id, Model model, HttpServletResponse response) throws IOException{
+		Optional<Estudante> temp = reposit.findById(id);
+		if(temp != null) {
+			Estudante estudante = temp.get();
+			response.setContentType("application/octet-stream");
+			String headerKey = "Content-Disposition";
+				String headerValue = "attachment; filename = "+ estudante.getDocName();
+				response.setHeader(headerKey, headerValue);
+				ServletOutputStream outputStrream = response.getOutputStream();
+				outputStrream.write(estudante.getContent());
+				outputStrream.close();
+		}
+	}
+	@GetMapping("/doc")
+	public void showDoc(@Param("id") Long id, HttpServletResponse response, Optional<Estudante> estudante)
+			   throws ServletException, IOException {
+			  
+			  estudante = reposit.findById(id);
+			  response.setContentType("doc/pdf, doc/txt");
+			  response.getOutputStream().write(estudante.get().getContent());
+			  response.getOutputStream().close();
+			 }
+			
 	//PESQUISA POR NOME
 	@PostMapping("/pesquisa")
 	public String pesquisar(@RequestParam("idpesquisa") String idpesquisa, Model model) {
@@ -119,5 +153,8 @@ public class Controller {
 		model.addAttribute("estudantes", this.reposit.findAll());
 		return "list";
 	}
+	
+		
+	
 
 }

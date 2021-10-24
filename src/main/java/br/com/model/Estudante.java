@@ -28,8 +28,14 @@ public class Estudante {
 	private String aluno;
 
 	@Lob
-	@Column(name = "nomeDocumento")
-	private String nomeDocumento;
+	@Column( name = "content")
+	private byte [] content;
+	
+	@Column(name = "docName")
+	private String docName;
+	
+	@Column(name = "tamanho")
+	private long tamanho;
 
 	@Column(name = "atividadeCertificado")
 	private String atividadeCertificado;
