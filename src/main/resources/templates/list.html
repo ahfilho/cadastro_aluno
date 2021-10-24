@@ -28,49 +28,59 @@
 </head>
 
 <body>
-	<div class="container my-2">
+
+	<div class="container">
 		<h4>OPÇÕES</h4>
-		<div class="card">
-			<div class="card-body">
+		<div class="row">
+			<div class="col-sm">
 				<div th:switch="${estudantes}" class="container my-5">
 					<p class="my-5">
 						<a href="/estudantes/showform" class="btn btn-primary"> <i
 							class="fas fa-user-plus ml-2"> Add novo</i></a> <a
 							href="/estudantes/inicio" style="margin-left: 2%;"
 							class="btn btn-dark">Início</a>
+							
 					</p>
-					<div class="col-md-15">
-						<h3 th:case="NULL">Excluido!</h3>
+					<div class="col-sm">
+					
+						<h3 th:case="NULL">Excluido!  <br>
+						<br>
+						<a href="/estudantes/list" class="btn btn-primary" type="button">Cadastrados</a>
+						</h3>
 						<div th:case="*">
-							<table>
+							<table class="table">
 								<thead>
 									<tr>
-										<th>Id:</th>
-										<th>Usuário:</th>
-										<th>Documento:</th>
-										<th>Atividade:</th>
-										<th>Horas:</th>
-										<th>Status:</th>
+										<th>Id</th>
+										<th>Aluno</th>
+										<th>Documento</th>
+										<th>Semestre</th>
+										<th>Atividade</th>
+										<th>Horas</th>
+										<th>Homologado</th>
+										<th>Não-Homologado</th>
 
 									</tr>
 								</thead>
 								</tbody>
 								<tr th:each="estudante:  ${estudantes}">
 									<td th:text="${estudante.id}"></td>
-									<td th:text="${estudante.usuario}"></td>
+									<td th:text="${estudante.aluno}"></td>
 									<td th:text="${estudante.nomeDocumento}"></td>
+									<td th:text="${estudante.periodo}"></td>
 									<td th:text="${estudante.atividadeCertificado}"></td>
 									<td th:text="${estudante.horas}">
-									<td th:text="${estudante.status}">
-									
-									<td><a th:href="@{/estudantes/edit/{id}(id=${estudante.id})}"
+									<td th:text="${estudante.homologado}">
+									<td th:text="${estudante.naoHomologado}">
+									<td><a
+										th:href="@{/estudantes/edit/{id}(id=${estudante.id})}"
 										class="btn btn-primary">Editar<i
 											class="fas fa-user-edit ml-2"></i></a></td>
-									<td><a th:href="@{/estudantes/del/{id}(id=${estudante.id})}"
+									<td><a
+										th:href="@{/estudantes/del/{id}(id=${estudante.id})}"
 										class="btn btn-primary">Excluir<i
 											class="fas fa-user-times ml-2"></i></a></td>
 								</tr>
-								<hr>
 							</table>
 							<hr>
 						</div>

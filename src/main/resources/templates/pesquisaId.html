@@ -24,41 +24,43 @@
 </head>
 
 <body>
-	<div class="botao">
-		<a href="/pcs/list" style="margin-left: 9%; margin-top: 3%"
-			class="btn btn-primary">Listar</a> <a href="/pcs/inicio"
-			style="margin-left: 2%; margin-top: 3%" class="btn btn-dark">Início</a>
-	</div>
-	<div class="container my-3">
-		<h4>Pesquisa por ID ou CPF</h4>
-		<div class="card">
-			<div class="card-body">
-				<div class="col-md-10">
-					<form action="#" th:action="@{/pcs/pesquisaId}" th:object="${pc}"
-						method="post">
-						<div class="row">
-							<div class="form-group col-md-8">
-								<label for="cliente" class="col-form-label">Id</label> <input
-									type="text" th:field="*{id}" class="form-control"
-									id="id" placeholder="Id a pesquisar"> <span
-									th:if="${#fields.hasErrors('id')}" th:errors="*{id}"
-									class="text-danger"></span>
+	<div class="container">
+		<h4>OPÇÕES</h4>
+		<div class="row">
+			<div class="col-sm">
+				<div th:switch="${estudantes}" class="container my-5">
+					<p class="my-5">
+						<a href="/estudantes/inicio" style="margin-left: 2%;"
+							class="btn btn-primary">Início</a>
+			<a href="/estudantes/list" class="btn btn-primary" type="button">Cadastrados</a>
 
-							</div>
-							<br> <br>
-							<div class="form-group col-md-6"></div>
-							<input type="submit" class="btn btn-primary" value="Adicionar">
-						</div>
-					</form>
+					</p>
+					<div class="col-sm">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Aluno</th>
+									<th>Documento</th>
+								</tr>
+							</thead>
+							</tbody>
+							<tr th:each="estudante:  ${estudantes}">
+								<td th:text="${estudante.id}"></td>
+								<td th:text="${estudante.aluno}"></td>
+								<td th:text="${estudante.nomeDocumento}"></td>
+
+
+							</tr>
+						</table>
+						<hr>
+					</div>
 				</div>
 			</div>
 		</div>
-
-
 	</div>
 
-
-
+	</div>
 
 
 </body>

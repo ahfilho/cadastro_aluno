@@ -24,23 +24,37 @@
 </head>
 
 <body>
-	<div class="logo" style="texto-align:center; margin-left:40%">
-	<br><br><br>
-		<h2>Arlindo Filho</h2>
-	
+	<div class="logo" style="texto-align: center; margin-left: 40%">
+		<br> <br> <br>
+		<h2>Grupo Tiradentes</h2>
 
-	<p>CADASTRO DE ESTUDANTES</p>
-	<div class="botoes">
 
-		<a href="/estudantes/showform" class="btn btn-primary"role="button">Novo</a>
+		<p>Cadastro de horas extracurriculares</p>
+		<br>
+		<div class="botoes">
 
-		<a href="/estudantes/list" class="btn btn-primary" type="button">Cadastrados</a>
-		
-		<a href="/estudante/inicio" class="btn btn-primary" type="button">Login</a>
-				
-		
+			<a href="/estudantes/showform" class="btn btn-primary" role="button">Novo</a>
+
+			<a href="/estudantes/list" class="btn btn-primary" type="button">Cadastrados</a>
+
+			<a href="/estudante/inicio" class="btn btn-primary" type="button">Login</a>
+
+			<div class="form-group col-md-4">
+
+				<form action="#" th:action="@{/estudantes/pesquisa}" method="post">
+					<br> <br> <label class="col-form-label">Pesquisar
+						por nome</label> <input style="margin-left: 0%;" class="form-control"
+						type="text" name="idpesquisa" required id="id"><br> <input
+						type="submit" class="btn btn-primary" value="Pesquisar"
+						placeholder="Id" style="text-align: center;">
+				</form>
+
+
+			</div>
+		</div>
+
 	</div>
-</div>
+
 
 </body>
 

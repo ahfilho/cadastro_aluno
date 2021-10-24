@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -23,19 +24,28 @@ public class Estudante {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "usuario")
-	private String usuario;
-	
+	@Column(name = "aluno")
+	private String aluno;
+
+	@Lob
 	@Column(name = "nomeDocumento")
 	private String nomeDocumento;
 
 	@Column(name = "atividadeCertificado")
 	private String atividadeCertificado;
-	
+
 	@Column(name = "horas")
 	private String horas;
+
+	@Column(name = "homologado")
+	private String homologado;
+
+	@Column(name="naoHomologado")
+	private String naoHomologado;
 	
-	@Column(name="status")
-	private String status;
+	@Column(name="periodo")
+	private String periodo;
 	
+	
+
 }

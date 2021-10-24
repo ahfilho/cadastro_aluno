@@ -38,58 +38,58 @@ s
 						th:object="${estudante}" method="post">
 						<div class="row">
 							<div class="form-group col-md-8">
-								<label for="usuario" class="col-form-label">Estudante</label> <input
-									type="text" th:field="*{usuario}" class="form-control"
-									id="usuario" placeholder="Nome completo"> <span
-									th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}"
+								<label for="aluno" class="col-form-label">Estudante</label> <input
+									type="text" th:field="*{aluno}" class="form-control"
+									id="aluno" placeholder="Nome completo"> <span
+									th:if="${#fields.hasErrors('aluno')}" th:errors="*{aluno}"
 									class="text-danger"></span>
-
-
-							</div>
-							<br>
-							<div class="form-group col-md-10">
-
-<label for="nomeDocumento" class="col-form-label">Documento</label><br>
-								<input type="file" name="nomeDocumento" id="nomeDocumento" multiple="multiple"><br>
-								<input type="reset" value="Apagar">
-								<input type="text" th:field="*{nomeDocumento}"
-									class="form-control" id="nomeDocumento"
-									placeholder="Nome do documento"> <span
-									th:if="${#fields.hasErrors('nomeDocumento')}"
-									th:errors="*{nomeDocumento}" class="text-danger"></span>
-
-
-
 							</div>
 
+							
 							<div class="form-group col-md-3">
+								<label for="nomeDocumento" class="col-form-label">Documento</label>
+								<input type="file" name="nomeDocumento" id="nomeDocumento"
+									multiple="multiple"><br> <input type="reset"
+									value="Apagar">
+
+
+							</div>
+							<div class="form-group col-md-2">
+
+								<label for="periodo" class="col-for-label">Semestre</label> <input
+									type="text" th:field="*{periodo}" class="form-control" id="periodo"
+									placeholder="Semestre">
+							</div>
+
+							<div class="form-group col-md-5">
 
 								<label for="atividadeCertificado" class="col-for-label">Atividade</label>
 								<input type="text" th:field="*{atividadeCertificado}"
 									class="form-control" id="atividadeCertificado"
 									placeholder="atividadeCertificado">
 							</div>
-							<div class="form-group col-md-3">
+							<div class="form-group col-md-2">
 
 								<label for="horas" class="col-for-label">Horas </label> <input
 									type="text" th:field="*{horas}" class="form-control" id="horas"
 									placeholder="Horas">
 							</div>
 							<div class="form-group col-md-3">
-
-
+								<label for="horas" class="col-for-label">Status </label>
 								<div class="form-check">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="status"> <label
-										class="form-check-label" for="status1"> Homologado </label>
+									<input class="form-check-input" type="radio" name="homologado"
+										id="homologado"> <label class="form-check-label"
+										for="homologado"> Homologado </label>
 								</div>
 								<div class="form-check">
 									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="status2" checked> <label
-										class="form-check-label" for="status2"> Não-Homologado
-									</label>
+										name="naoHomologado" id="naoHomologado"> <label
+										class="form-check-label" for="naoHomologado">
+										Não-Homologado </label>
 								</div>
+
 							</div>
+							
 
 
 
