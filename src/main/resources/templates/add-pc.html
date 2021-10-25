@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 
 <title>Cadastro</title>
@@ -19,70 +19,69 @@
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 	crossorigin="anonymous">
 
-<link rel="stylesheet" href="/css/main.css">
+<link type="text/css" rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
 </head>
 
 <body>
 
-	<div class="botao"></div>
-	<h4 style="text-align: center; font-size: 25px; margin-top: 3%;">
-		Grupo Tiradentes</h4>
-	<p style="text-align: center">Adicionar novo</p>
-	<div class="container my-2">
-		<a href="/estudantes/list" style="margin-left: 0%; margin-top: 3%"
-			class="btn btn-primary">Listar</a> <a href="/estudantes/inicio"
-			style="margin-left: 2%; margin-top: 3%" class="btn btn-primary">Início</a>
+	<div class="class1">
+		<h4 style="text-align: center; font-size: 25px; margin-top: 3%;">
+			Grupo Tiradentes</h4>
+		<p style="text-align: center">Adicionar novo</p>
+		<div class="flex-container my-2">
+			<a href="/estudantes/list" style="margin-left: 0%; margin-top: 3%"
+				class="btn btn-outline-primary my-2 my-sm-0">Listar</a> <a href="/estudantes/inicio"
+				style="margin-left: 2%; margin-top: 3%" class="btn btn-outline-primary my-2 my-sm-0">Início</a>
 
-
+		</div>
 
 		<br> <br>
-		<div class="flex-container">
-			<div class="col-md-10">
+		<div class="class2">
+		<div class="col-md-10">
 
-				<form action="#" th:action="@{/estudantes/add}"
-					enctype="multipart/form-data" th:object="${estudante}"
-					method="post">
-					<div class="row">
-						<div class="form-group col-md-8">
-							<label for="aluno" class="col-form-label">Estudante</label> <input
-								type="text" required th:field="*{aluno}" class="form-control"
-								id="aluno" placeholder="Nome completo"> <span
-								th:if="${#fields.hasErrors('aluno')}" th:errors="*{aluno}"
-								class="text-danger"></span>
-						</div>
-
-
-						<div class="form-group col-md-3">
-							<label for="nomeDocumento" class="col-form-label">Certificado</label>
-							<input type="file" name="docName" required id="nomeDocumento"
-								multiple="multiple" accept="file/pdf"><br> <input
-								type="reset" value="Apagar">
+			<form action="#" th:action="@{/estudantes/add}"
+				enctype="multipart/form-data" th:object="${estudante}" method="post">
+				<div class="row">
+					<div class="form-group col-md-8">
+						<label for="aluno" class="col-form-label">Estudante</label> <input
+							type="text" required th:field="*{aluno}" class="form-control"
+							id="aluno" placeholder="Nome completo"> <span
+							th:if="${#fields.hasErrors('aluno')}" th:errors="*{aluno}"
+							class="text-danger"></span>
+					</div>
 
 
-						</div>
-						<div class="form-group col-md-2">
+					<div class="form-group col-md-3">
+						<label for="nomeDocumento" class="col-form-label">Certificado</label>
+						<input type="file" name="docName" required id="nomeDocumento"
+							multiple="multiple" accept="file/pdf"><br> <input
+							type="reset" value="Apagar">
 
-							<label for="periodo" class="col-for-label">Semestre</label> <input
-								type="text" th:field="*{periodo}" required class="form-control"
-								id="periodo" placeholder="Semestre">
-						</div>
 
-						<div class="form-group col-md-5">
+					</div>
+					<div class="form-group col-md-2">
 
-							<label for="atividadeCertificado" class="col-for-label">Atividade</label>
-							<input type="text" th:field="*{atividadeCertificado}" required
-								class="form-control" id="atividadeCertificado"
-								placeholder="atividadeCertificado">
-						</div>
-						<div class="form-group col-md-2">
+						<label for="periodo" class="col-for-label">Semestre</label> <input
+							type="text" th:field="*{periodo}" required class="form-control"
+							id="periodo" placeholder="Semestre">
+					</div>
 
-							<label for="horas" class="col-for-label">Horas </label> <input
-								type="text" name="horas" th:field="*{horas}" required
-								class="form-control" id="horas" placeholder="Horas">
-						</div>
-						<!-- 
+					<div class="form-group col-md-5">
+
+						<label for="atividadeCertificado" class="col-for-label">Atividade</label>
+						<input type="text" th:field="*{atividadeCertificado}" required
+							class="form-control" id="atividadeCertificado"
+							placeholder="atividadeCertificado">
+					</div>
+					<div class="form-group col-md-2">
+
+						<label for="horas" class="col-for-label">Horas </label> <input
+							type="text" name="horas" th:field="*{horas}" required
+							class="form-control" id="horas" placeholder="Horas">
+					</div>
+					<!-- 
 														<div class="form-group col-md-3">
 								<label for="horas" class="col-for-label">Status </label>
 								<div class="form-check">
@@ -99,22 +98,11 @@
 
 							</div>
 -->
-						<br>
-						<div class="form-group col-md-6"></div>
-						<input type="submit" class="btn btn-primary" value="Adicionar">
-					</div>
-				</form>
-			</div>
+					<input type="submit" class="btn btn-outline-primary my-2 my-sm-0" value="Adicionar"></div>
+			</form>
 		</div>
 	</div>
-
-
-
-
-
-
-
-
+	</div>
 </body>
 
 </html>
