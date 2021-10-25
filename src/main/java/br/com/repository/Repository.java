@@ -15,7 +15,7 @@ public interface Repository extends JpaRepository<Estudante, Long> {
 	@Query("select p from Estudante p where p.aluno like %?1%")
 	List<Estudante> findByNome(String aluno);
 	
-	//@Query("select aluno from estudante where horas = 3")
+	//@Query("select aluno from estudante where horas >= 20")
 	//public String valida(String horas);
 
 

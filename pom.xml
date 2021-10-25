@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>Arlindo</groupId>
-	<artifactId>MVC</artifactId>
+	<artifactId>JIX</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>MVC</name>
+	<name>MJIX</name>
 	<description>crud mvc thymeleaf mysql</description>
 	<properties>
 		<java.version>1.8</java.version>

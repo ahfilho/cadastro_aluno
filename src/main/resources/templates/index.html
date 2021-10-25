@@ -18,43 +18,32 @@
 	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 	crossorigin="anonymous">
-
+<link rel="stylesheet" href="/main.css}" />
 </head>
 <body>
 </head>
 
 <body>
-	<div class="logo" style="texto-align: center; margin-left: 40%">
-		<br> <br> <br>
-		<h2>Grupo Tiradentes</h2>
-
-
-		<p>Cadastro de horas extracurriculares</p>
-		<br>
-		<div class="botoes">
-
-			<a href="/estudantes/showform" class="btn btn-primary" role="button">Novo</a>
-
-			<a href="/estudantes/list" class="btn btn-primary" type="button">Cadastrados</a>
-
-			<a href="/estudante/inicio" class="btn btn-primary" type="button">Login</a>
-
-			<div class="form-group col-md-4">
-
-				<form action="#" th:action="@{/estudantes/pesquisa}" method="post">
-					<br> <br> <label class="col-form-label">Pesquisar
-						por nome</label> <input style="margin-left: 0%;" class="form-control"
-						type="text" name="idpesquisa" required id="id"><br> <input
-						type="submit" class="btn btn-primary" value="Pesquisar"
-						placeholder="Id" style="text-align: center;">
-				</form>
-
-
-			</div>
+	<nav class="navbar navbar-dark bg-dark">
+		<div class="logo" style="texto-align: center; margin-left: 40%">
+			<br> <br> <br>
+			<h2 style="color: white;">Grupo Tiradentes</h2>
+			<p style="color: white;">Cadastro de horas extracurriculares</p>
+			<br> <a href="/estudantes/showform"
+				class="btn btn-outline-primary my-2 my-sm-0" role="button">Novo</a>
+			<a href="/estudantes/list"
+				class="btn btn-outline-primary my-2 my-sm-0" type="button">Cadastrados</a>
+			<form class="form=inline" action="#"
+				th:action="@{/estudantes/pesquisa}" method="post">
+				<br> <br> <label class="col-form-label"
+					style="color: white; text-align:center;">Pesquisar por nome</label> <input
+					style="margin-left: 0%;" class="form-control" type="text"
+					name="idpesquisa" required id="id"><br> <input
+					type="submit" class="btn btn-outline-primary my-2 my-sm-0"
+					value="Pesquisar" placeholder="Id" style="text-align: center;">
+			</form>
 		</div>
-
-	</div>
-
+	</nav>
 
 </body>
 
