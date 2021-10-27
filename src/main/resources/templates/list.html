@@ -32,22 +32,25 @@
 <body>
 
 	<div class="flex-container">
-
+				Grupo Tiradentes | Mundo Jix
+		</div>
 		<div class="row">
-			<div class="col-sm">
 				<div th:switch="${estudantes}" class="container my-5">
 					<p class="my-5">
 						<a href="/estudantes/showform"
-							class="btn btn-outline-primary my-2 my-sm-0"><i class="fa fa-plus"></i></a> <a
-							href="/estudantes/inicio" style="margin-left: 2%;"
-							class="btn btn-outline-primary my-2 my-sm-0"><i class="fa fa-home"></i></a>
+							class="btn btn-outline-primary my-2 my-sm-0"><i
+							class="fa fa-plus"></i></a> <a href="/estudantes/inicio"
+							style="margin-left: 2%;"
+							class="btn btn-outline-primary my-2 my-sm-0"><i
+							class="fa fa-home"></i></a>
 
 					</p>
 					<div class="col-sm">
 
 						<h3 th:case="NULL">
 							Excluido! <br> <br> <a href="/estudantes/list"
-								class="btn btn-outline-primary my-2 my-sm-0" type="button"><i class="fa fa-list"></i></a>
+								class="btn btn-outline-primary my-2 my-sm-0" type="button"><i
+								class="fa fa-list"></i></a>
 						</h3>
 						<div th:case="*">
 
@@ -80,16 +83,18 @@
 									<td th:text="${estudante.naoHomologado}">
 									<td><a
 										th:href="@{/estudantes/edit/{id}(id=${estudante.id})}"
-										class="btn btn-outline-primary my-2 my-sm-0"><i class="fa fa-edit"></i></a></td>
+										class="btn btn-outline-primary my-2 my-sm-0"><i
+											class="fa fa-edit"></i></a></td>
 									<td><a
 										th:href="@{/estudantes/del/{id}(id=${estudante.id})}"
-										class="btn btn-outline-primary my-2 my-sm-0"><i class="fa fa-trash"></i></a></td>
-											<td><div>
+										class="btn btn-outline-primary my-2 my-sm-0"><i
+											class="fa fa-trash"></i></a></td>
+									<td><div>
 											<a th:href="@{'/downloadfile?id=' + ${estudante.id}}"><i
 												class="fa fa-download"></i></a>
-										</div>  <a th:href="@{'/doc?id='+ ${estudante.id}}" width="100px" height="50px"></a> 
-										<!--<div>[[${estudante.docName}]]</div>-->
-										<div>([[${estudante.tamanho}]]) B</div> </td>
+										</div> <a th:href="@{'/doc?id='+ ${estudante.id}}" width="100px"
+										height="50px"></a> <!--<div>[[${estudante.docName}]]</div>-->
+										<div>([[${estudante.tamanho}]]) B</div></td>
 								</tr>
 							</table>
 							<hr>
@@ -97,14 +102,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
-
-	</div>
-
-
-
-
 
 </body>
 
