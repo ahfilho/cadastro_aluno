@@ -25,21 +25,27 @@
 
 <body>
 <div class="flex-container">
+<ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li style="float:right"><a href="#about">About</a></li>
+</ul>
 
 		<div class="logo" style="texto-align: center; margin-left: 40%">
 			<br> <br> <br>
-			<h2><p>Grupo Tiradentes</h2>
+			<h2>Grupo Tiradentes</h2>
 			<p>Cadastro de horas extracurriculares</p>
 			<br> <a href="/estudantes/showform"
-				class="btn btn-outline-primary my-2 my-sm-0" role="button">Novo</a>
+				class="btn btn-outline-primary my-2 my-sm-0" role="button"><i class="fa fa-plus"></i></a>
 			<a href="/estudantes/list"
-				class="btn btn-outline-primary my-2 my-sm-0" type="button">Cadastrados</a>
+				class="btn btn-outline-primary my-2 my-sm-0" type="button"><i class="fa fa-list"></i></a>
 			<form class="form=inline" action="#"
 				th:action="@{/estudantes/pesquisa}" method="post">
 				<br> <br> <label class="col-form-label"
-					style="color: white; text-align:center;">Pesquisar por nome</label> <input
+					style="text-align:center;">Pesquisar por nome </label> <input
 					style="margin-left: 0%;" class="form-control" type="text"
-					name="idpesquisa" required id="id"><br> <input
+					name="idpesquisa" required id="id"><br> <input 
 					type="submit" class="btn btn-outline-primary my-2 my-sm-0"
 					value="Pesquisar" placeholder="Id" style="text-align: center;">
 			</form>

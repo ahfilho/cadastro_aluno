@@ -70,6 +70,7 @@ public class Controller {
 		estudante.setContent(nomeDocumento.getBytes());
 		estudante.setTamanho(nomeDocumento.getSize());
 		this.reposit.save(estudante);
+		model.addAttribute("Sucesso", "Sucesso no upload do arquivo!");
 		return "redirect:espera";
 	}
 	public void valida(@RequestParam("horas")  Estudante estudante){

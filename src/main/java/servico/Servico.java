@@ -23,10 +23,15 @@ public class Servico {
 				() -> new ObjectNotFoundException("Id não encontrado!" + id + "TIPO:" + Servico.class.getName()));
 	}
 	
+	public Estudante getFile(Estudante estudante) {
+		return repo.save(estudante);
+	}
 	public List<Estudante> todosDocumentos(){
 		return  repo.findAll();
 }
 	 public Optional<Estudante> findStudentById(long id){
 		  return repo.findById(id);
 }
+	 
+	 
 }

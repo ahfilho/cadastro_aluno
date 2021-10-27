@@ -15,8 +15,16 @@ public interface Repository extends JpaRepository<Estudante, Long> {
 	@Query("select p from Estudante p where p.aluno like %?1%")
 	List<Estudante> findByNome(String aluno);
 	
+
+	
+	//@Query("select p from Estudante p where p.id =")
+	//Optional<Estudante> findById(Long id );
+	
 	//@Query("select aluno from estudante where horas >= 20")
 	//public String valida(String horas);
-
+	
+	// realiza soma de uma coluna de acordo com o que busco
+	//@Query("select sum(horas) from estudante where aluno = Arlindo jose de lima filho")
+	//public String valida(String horas);
 
 }
