@@ -47,8 +47,8 @@ public class Controller {
 	}
 
 	@GetMapping("showform")
-	public String showPcForm(Estudante estudante) {
-		return "add-pc";
+	public String show(Estudante estudante) {
+		return "add";
 	}
 
 	@GetMapping("/list")
@@ -63,7 +63,7 @@ public class Controller {
 			BindingResult result, Model model) throws IOException {
 		estudante.getAluno();
 		if (result.hasErrors()) {
-			return "add-pc";
+			return "add";
 		}
 		String fileName = nomeDocumento.getOriginalFilename();
 		estudante.setDocName(fileName);
@@ -71,16 +71,7 @@ public class Controller {
 		estudante.setTamanho(nomeDocumento.getSize());
 		this.reposit.save(estudante);
 		model.addAttribute("Sucesso", "Sucesso no upload do arquivo!");
-		return "redirect:espera";
-	}
-	public void valida(@RequestParam("horas")  Estudante estudante){
-
-		int validaHoras = Integer.parseInt("horas");
-		if(validaHoras >= 20) {
-			
-		}
-		
-		
+		return "redirect:aviso";
 	}
 
 	@GetMapping("/downloadfile")
@@ -109,23 +100,23 @@ public class Controller {
 	}
 
 	// PESQUISA POR NOME
-	@PostMapping("/pesquisa")
-	public String pesquisar(@RequestParam("idpesquisa") String idpesquisa, Model model) {
+	@PostMapping("/pesquisaNome")
+	public String pesquisar(@RequestParam("nomepesquisa") String nomepesquisa, Model model) {
 
-		model.addAttribute("estudantes", this.reposit.findByNome(idpesquisa));
-		return "pesquisaId";
+		model.addAttribute("estudantes", this.reposit.findByNome(nomepesquisa));
+		return "pesquisaNome";
+	}
+	// PESQUISA POR ID
+	@PostMapping("/pesquisaporId")
+	public String pesquisaId(@RequestParam("id") Long id, Model model) {
+		model.addAttribute("estudantes", this.reposit.findById(id));
+		return "pesquisaNome";
+
 	}
 
-	@PostMapping("/pesquisaId")
-	public String pesquisaId(@RequestParam("pesquisaporid") Long pesquisaporid, Model model) {
-		model.addAttribute("estudantes", this.reposit.findById(pesquisaporid));
-		return "pesquisaId";
-
-	}
-
-	@GetMapping("espera")
+	@GetMapping("aviso")
 	public String espera() {
-		return "espera";
+		return "aviso";
 
 	}
 
@@ -143,7 +134,7 @@ public class Controller {
 	}
 
 	@GetMapping("/del/{id}")
-	public String deletaPc(@PathVariable("id") long id, Model model) {
+	public String deleta(@PathVariable("id") long id, Model model) {
 		Estudante estudante = this.reposit.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Este estudante não está aqui." + id));
 
@@ -153,9 +144,9 @@ public class Controller {
 	}
 
 	@PostMapping("atualiza/{id}")
-	public String atualizaPc(@PathVariable("id") long id, Estudante estudante, BindingResult result, Model model) {
+	public String atualizaPc(@PathVariable("id") long id,String docName, MultipartFile file, Estudante estudante, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-			estudante.setId(id);
+		
 			return "update";
 		}
 		// atualiza produto

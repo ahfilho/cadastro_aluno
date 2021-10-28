@@ -15,7 +15,8 @@ public interface Repository extends JpaRepository<Estudante, Long> {
 	@Query("select p from Estudante p where p.aluno like %?1%")
 	List<Estudante> findByNome(String aluno);
 	
-
+	//@Query("select q from Estudante q where q.id like %?1%")
+	//List<Estudante> contadorHoras(String horas);
 	
 	//@Query("select p from Estudante p where p.id =")
 	//Optional<Estudante> findById(Long id );

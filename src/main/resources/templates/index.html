@@ -18,31 +18,58 @@
 	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 	crossorigin="anonymous">
-      <link type="text/css" rel="stylesheet" href="/css/main.css"/>
+<link type="text/css" rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
 </head>
 
 <body>
-<div class="flex-container">
+	<div class="flex-container">
 
-			<br> <br> <br>
-			<h2>Grupo Tiradentes</h2>
-			<p>Cadastro de horas extracurriculares</p>
-			<br> <a href="/estudantes/showform"
-				class="btn btn-outline-primary my-2 my-sm-0" role="button"><i class="fa fa-plus"></i></a>
-			<a href="/estudantes/list"
-				class="btn btn-outline-primary my-2 my-sm-0" type="button"><i class="fa fa-list"></i></a>
+		<br> <br> <br>
+		<h2>Grupo Tiradentes</h2>
+		<p>Cadastro de horas extracurriculares | Portal do estudante</p>
+
+		<div class="botoes">
+			<a href="/estudantes/showform"
+				class="btn btn-outline-primary my-2 my-sm-0" role="button"><i
+				class="fa fa-plus"></i></a> <a href="/estudantes/list"
+				class="btn btn-outline-primary my-2 my-sm-0" type="button"><i
+				class="fa fa-list"></i></a>
+		</div>
+		<div class="forms">
 			<form class="form=inline" action="#"
-				th:action="@{/estudantes/pesquisa}" method="post">
+				th:action="@{/estudantes/pesquisaNome}" method="post">
 				<br> <br> <label class="col-form-label"
-					style="text-align:center;">Pesquisar por nome </label> <input
+					style="text-align: center;">Consultar por nome</label> <input
 					style="margin-left: 0%;" class="form-control" type="text"
-					name="idpesquisa" required id="id"><br> <input 
+					name="nomepesquisa" required id="id" placeholder="Insira seu nome"><br>
+				<input type="submit" class="btn btn-outline-primary my-2 my-sm-0"
+					value="Pesquisar" placeholder="Id" style="text-align: center;">
+			</form>
+			<form class="form=inline" action="#"
+				th:action="@{/estudantes/pesquisaporId}" method="post">
+				<br> <br> <label class="col-form-label"
+					style="text-align: center;">Consultar por Id</label> <input
+					style="margin-left: 0%;" class="form-control" type="text" name="id"
+					required id="id" placeholder="Insira seu id"><br> <input
 					type="submit" class="btn btn-outline-primary my-2 my-sm-0"
 					value="Pesquisar" placeholder="Id" style="text-align: center;">
 			</form>
+
+
+			<form class="form=inline" action="#"
+				th:action="@{/estudantes/pesquisaHora}" method="post">
+				<br> <br> <label class="col-form-label"
+					style="text-align: center;">HORASSSSS</label> <input
+					style="margin-left: 0%;" class="form-control" type="text"
+					name="totalHoras" required id="totalHoras"
+					placeholder="Insira seu id"><br> <input type="submit"
+					class="btn btn-outline-primary my-2 my-sm-0" value="Pesquisar"
+					placeholder="Id" style="text-align: center;">
+			</form>
 		</div>
+	</div>
 </body>
 
 </html>
