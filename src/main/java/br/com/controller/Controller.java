@@ -14,6 +14,8 @@ import org.springframework.boot.autoconfigure.amqp.ConnectionFactoryCustomizer;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -46,6 +48,11 @@ public class Controller {
 		return "index";
 	}
 
+	@GetMapping("aluno")
+	public String aluno() {
+		return "aluno";
+	}
+
 	@GetMapping("showform")
 	public String show(Estudante estudante) {
 		return "add";
@@ -70,11 +77,10 @@ public class Controller {
 		estudante.setContent(nomeDocumento.getBytes());
 		estudante.setTamanho(nomeDocumento.getSize());
 		this.reposit.save(estudante);
-		model.addAttribute("Sucesso", "Sucesso no upload do arquivo!");
 		return "redirect:aviso";
 	}
 
-	@GetMapping("/downloadfile")
+	@GetMapping("/downloadfile/{id}")
 	public void downloadFile(@Param("id") Long id, Model model, HttpServletResponse response) throws IOException {
 		Optional<Estudante> temp = reposit.findById(id);
 		if (temp != null) {
@@ -83,9 +89,10 @@ public class Controller {
 			String headerKey = "Content-Disposition";
 			String headerValue = "attachment; filename = " + estudante.getDocName();
 			response.setHeader(headerKey, headerValue);
-			ServletOutputStream outputStrream = response.getOutputStream();
-			outputStrream.write(estudante.getContent());
-			outputStrream.close();
+			ServletOutputStream outputStream = response.getOutputStream();
+			outputStream.write(estudante.getContent());
+			outputStream.close();
+
 		}
 	}
 
@@ -104,14 +111,37 @@ public class Controller {
 	public String pesquisar(@RequestParam("nomepesquisa") String nomepesquisa, Model model) {
 
 		model.addAttribute("estudantes", this.reposit.findByNome(nomepesquisa));
+
 		return "pesquisaNome";
 	}
+
 	// PESQUISA POR ID
 	@PostMapping("/pesquisaporId")
-	public String pesquisaId(@RequestParam("id") Long id, Model model) {
-		model.addAttribute("estudantes", this.reposit.findById(id));
+	public String pesquisaId(@RequestParam("idpesquisa") Long id, Model model) {
+		Optional<Estudante> teste = reposit.findById(id);
+		if (teste.isPresent()) {
+
+			model.addAttribute("estudantes", teste.get());
+		}
 		return "pesquisaNome";
 
+	}
+
+	@PostMapping("/pesquisaporMatricula")
+	public String pesquisaId(@RequestParam("matricula") String matricula , Model model,
+			 Estudante estudante) {
+		Optional<Estudante> teste = reposit.findByMatricula(matricula);
+
+		if (teste.isPresent()) {
+
+			model.addAttribute("estudantes", teste.get());
+
+			System.out.println(reposit.somahoras(matricula));
+
+		}
+	
+
+		return "pesquisaNome";
 	}
 
 	@GetMapping("aviso")
@@ -126,7 +156,7 @@ public class Controller {
 	}
 
 	@GetMapping("edit/{id}")
-	public String showUpdateForm(@PathVariable("id") long id, Model model) {
+	public String alterar(@PathVariable("id") long id, Model model) {
 		Estudante estudante = this.reposit.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException(" estudante invalido" + id));
 		model.addAttribute("estudante", estudante);
@@ -144,15 +174,13 @@ public class Controller {
 	}
 
 	@PostMapping("atualiza/{id}")
-	public String atualizaPc(@PathVariable("id") long id,String docName, MultipartFile file, Estudante estudante, BindingResult result, Model model) {
+	public String atualiza(@PathVariable("id") long id,String docName, @Validated Estudante estudante, BindingResult result,
+			Model model) {
 		if (result.hasErrors()) {
-		
+			estudante.setId(id);
 			return "update";
 		}
-		// atualiza produto
 		reposit.save(estudante);
-
-		// pega todos os produtos atualizados
 		model.addAttribute("estudantes", this.reposit.findAll());
 		return "list";
 	}

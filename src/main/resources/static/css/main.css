@@ -1,22 +1,6 @@
 .flex-container {
 	display: flex;
 	align-items: center;
-	  flex-wrap: nowrap;
-	  justify-content: center;
-flex-direction: column;
-
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-
-.row {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-}
-.cabecalho{
-	margin-top:5%;
-	textt-align:center;
-	
-	
+	flex-wrap: nowrap;
+	flex-direction: column;
 }

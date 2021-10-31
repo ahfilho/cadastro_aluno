@@ -13,7 +13,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+ @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -24,6 +24,9 @@ public class Estudante {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Column(name = "matricula")
+	private String matricula;
+	
 	@Column(name = "aluno")
 	private String aluno;
 
@@ -42,6 +45,10 @@ public class Estudante {
 
 	@Column(name = "horas")
 	private String horas;
+	
+
+	@Column(name = "totalhoras")
+	private String totalHoras;
 
 	@Column(name = "homologado")
 	private String homologado;

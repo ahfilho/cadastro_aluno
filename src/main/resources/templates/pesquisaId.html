@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
 <title>Cadastro</title>
@@ -19,51 +19,34 @@
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 	crossorigin="anonymous">
 
-<link type="text/css" rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
 </head>
 
 <body>
 	<div class="flex-container">
-
-		<h4 style="text-align: center; font-size: 25px; margin-top: 3%;">Grupo
-			Tiradentes | Mundo Jix</h4>
-
-		<nav
-			class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
-			<a class="navbar-brand" href="/estudantes/inicio">Home</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-				<div class="navbar-nav">
-					<!-- 	<a class="nav-item nav-link active" href="/estudantes/list">Cadastrados
-						<span class="sr-only">(current)</span>
-					</a> 
-					-->
-					<a class="nav-item nav-link" href="#">Meus dados</a> <a
-						class="nav-item nav-link" href="#">Acadêmico</a> <a
-						class="nav-item nav-link" href="">Pontos</a>
-				</div>
-			</div>
-		</nav>
 		<br>
 		<h4 style="text-align: center;">Status da homologação</h4>
 		<div class="row">
 			<div class="col-sm">
 				<div th:switch="${estudantes}" class="container my-5">
+					<p class="my-5">
+						<a href="/estudantes/list"
+							class="btn btn-outline-primary my-2 my-sm-0"><i
+							class="fa fa-list"></i></a> <a href="/estudantes/inicio"
+							class="btn btn-outline-primary my-2 my-sm-0"><i
+							class="fa fa-home"></i></a> <br>
+
+					</p>
 					<div class="col-sm">
 						<table class="table">
 							<thead>
 								<tr>
+									<th>Id</th>
 									<th>Aluno</th>
-									<th>Matrícula</th>
-									<th>Documentos</th>
+									<th>Documento</th>
 									<th>Atividade</th>
-									<th>Total de Horas</th>
+									<th>Horas</th>
 									<th>Homologado</th>
 									<th>Não-Homologado</th>
 									<th>Download</th>
@@ -72,12 +55,11 @@
 							</thead>
 							</tbody>
 							<tr th:each="estudante:  ${estudantes}">
+								<td th:text="${estudante.id}"></td>
 								<td th:text="${estudante.aluno}"></td>
-								<td th:text="${estudante.matricula}"></td>
 								<td th:text="${estudante.docName}"></td>
-								
 								<td th:text="${estudante.atividadeCertificado}"></td>
-								<td th:text="${estudante.totalHoras}"></td>
+								<td th:text="${estudante.horas}"></td>
 								<td th:text="${estudante.homologado}"></td>
 								<td th:text="${estudante.naoHomologado}"></td>
 
@@ -87,7 +69,10 @@
 								 -->
 								<td>
 									<div>
-
+									 <a th:href="@{/download/file/{id}(id=${file.id})}">
+         <span th:text="${file.fileName}">Download</span>
+  </a>
+									
 										<a th:href="@{'/downloadfile?id=' + ${estudante.id}}"><i
 											class="fa fa-download"></i></a>
 									</div>
@@ -99,7 +84,7 @@
 				</div>
 			</div>
 		</div>
-
+	
 	</div>
 
 
