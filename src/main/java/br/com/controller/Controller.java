@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.amqp.ConnectionFactoryCustomizer;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -128,18 +129,16 @@ public class Controller {
 	}
 
 	@PostMapping("/pesquisaporMatricula")
-	public String pesquisaId(@RequestParam("matricula") String matricula , Model model,
-			 Estudante estudante) {
+	public String pesquisaMat(@RequestParam("matricula") String matricula, Model model, Estudante estudante) {
 		Optional<Estudante> teste = reposit.findByMatricula(matricula);
 
 		if (teste.isPresent()) {
 
 			model.addAttribute("estudantes", teste.get());
-
-			System.out.println(reposit.somahoras(matricula));
+			System.out.println("RESULTADO DA QUERY" + reposit.somahoras(matricula));
+		
 
 		}
-	
 
 		return "pesquisaNome";
 	}
@@ -174,8 +173,8 @@ public class Controller {
 	}
 
 	@PostMapping("atualiza/{id}")
-	public String atualiza(@PathVariable("id") long id,String docName, @Validated Estudante estudante, BindingResult result,
-			Model model) {
+	public String atualiza(@PathVariable("id") long id, MultipartFile nomeDocumento, @Validated Estudante estudante,
+			BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			estudante.setId(id);
 			return "update";
@@ -185,4 +184,6 @@ public class Controller {
 		return "list";
 	}
 
+
+	
 }
