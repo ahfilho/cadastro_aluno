@@ -19,7 +19,7 @@ public interface Repository extends JpaRepository<Estudante, Long> {
 	public Optional<Estudante> findByMatricula(String matricula);
 
 	@Query ("select sum(p.horas) from Estudante p where p.matricula like %?1%")
-	public Optional<Estudante> somahoras(@Param("teste")String totalHoras);
+	public Optional<Estudante> somahoras(String totalHoras);
 	
 
 	/*  FUNCIONANDO CONSULTA POR MATRICULA

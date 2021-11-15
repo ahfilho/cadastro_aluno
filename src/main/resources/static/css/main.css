@@ -3,4 +3,19 @@
 	align-items: center;
 	flex-wrap: nowrap;
 	flex-direction: column;
+	font-family: sans-serif;
+}
+
+.card {
+	text-align: center;
+}
+
+#card1 {
+	background-color: #87CEEB;
+}
+#card2{
+	background-color: #8FBC8F; 
+}
+.col-md-10{
+	background-color: #E8E8E8;
 }

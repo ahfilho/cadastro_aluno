@@ -59,6 +59,7 @@
 						<table class="table">
 							<thead>
 								<tr>
+									<th>Id</th>
 									<th>Aluno</th>
 									<th>Matrícula</th>
 									<th>Documentos</th>
@@ -70,13 +71,15 @@
 
 								</tr>
 							</thead>
+
 							</tbody>
 							<tr th:each="estudante:  ${estudantes}">
+								<td th:text="${estudante.id}"></td>
 								<td th:text="${estudante.aluno}"></td>
 								<td th:text="${estudante.matricula}"></td>
 								<td th:text="${estudante.docName}"></td>
 								<td th:text="${estudante.atividadeCertificado}"></td>
-								<td th:text="${estudante.horas}"></td>
+								<td th:text="${estudante.totalHoras}"></td>
 								<td th:text="${estudante.homologado}"></td>
 								<td th:text="${estudante.naoHomologado}"></td>
 
@@ -95,6 +98,7 @@
 						</table>
 						<hr>
 					</div>
+
 </body>
 
 </html>

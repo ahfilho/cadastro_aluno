@@ -1,4 +1,4 @@
- package br.com.controller;
+package br.com.controller;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -135,12 +135,15 @@ public class Controller {
 		if (teste.isPresent()) {
 
 			model.addAttribute("estudantes", teste.get());
-			System.out.println("RESULTADO DA QUERY" + reposit.somahoras(matricula));
 
+			
+			System.out.println("RESULTADO DA QUERY" + reposit.somahoras(matricula));
+			
 		}
 
 		return "pesquisaNome";
 	}
+
 
 	@GetMapping("aviso")
 	public String espera() {
@@ -158,7 +161,7 @@ public class Controller {
 		Estudante estudante = this.reposit.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException(" estudante invalido" + id));
 		model.addAttribute("estudante", estudante);
-		
+
 		return "update";
 	}
 
@@ -177,10 +180,9 @@ public class Controller {
 			BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			estudante.setId(id);
-			
+
 			return "update";
 		}
-		
 		reposit.save(estudante);
 		model.addAttribute("estudantes", this.reposit.findAll());
 		return "list";
