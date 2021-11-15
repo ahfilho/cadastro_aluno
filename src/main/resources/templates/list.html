@@ -50,7 +50,7 @@
 			</div>
 		</nav>
 		<div class="row">
-		
+
 			<div th:switch="${estudantes}" class="container my-5">
 				<!-- <p class="my-5">
 					<a href="/estudantes/inicio"
@@ -108,7 +108,7 @@
 								<td><div>
 										<a th:href="@{'/downloadfile?id=' + $(){estudante.id}}"><i
 											class="fa fa-download"></i></a>
-									</div> <a th:href="@{'/doc?id='+ ${estudante.id}}" width="150px"
+									</div> <a th:href="@{'/doc?id=' + ${estudante.id}}" width="150px"
 									height="50px"></a> <!--<div>[[${estudante.docName}]]</div>-->
 									<div>([[${estudante.tamanho}]]) B</div></td>
 							</tr>
@@ -122,3 +122,14 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+

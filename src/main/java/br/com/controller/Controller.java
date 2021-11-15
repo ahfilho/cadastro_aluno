@@ -1,4 +1,4 @@
-package br.com.controller;
+ package br.com.controller;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -60,7 +60,7 @@ public class Controller {
 	}
 
 	@GetMapping("/list")
-	public String listaEstudantes(Model model) {
+	public String listaEstudantes(Model model, Estudante estudante) {
 		model.addAttribute("estudantes", this.reposit.findAll());
 
 		return "list";
@@ -136,7 +136,6 @@ public class Controller {
 
 			model.addAttribute("estudantes", teste.get());
 			System.out.println("RESULTADO DA QUERY" + reposit.somahoras(matricula));
-		
 
 		}
 
@@ -155,10 +154,11 @@ public class Controller {
 	}
 
 	@GetMapping("edit/{id}")
-	public String alterar(@PathVariable("id") long id, Model model) {
+	public String alterar(@PathVariable("id") long id, Model model, MultipartFile nomeDocumento) {
 		Estudante estudante = this.reposit.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException(" estudante invalido" + id));
 		model.addAttribute("estudante", estudante);
+		
 		return "update";
 	}
 
@@ -177,13 +177,13 @@ public class Controller {
 			BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			estudante.setId(id);
+			
 			return "update";
 		}
+		
 		reposit.save(estudante);
 		model.addAttribute("estudantes", this.reposit.findAll());
 		return "list";
 	}
 
-
-	
 }
