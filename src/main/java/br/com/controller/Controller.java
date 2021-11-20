@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.model.Estudante;
 import br.com.repository.Repository;
@@ -43,6 +44,9 @@ public class Controller {
 
 	@Autowired
 	private Repository reposit;
+
+	// @Autowired
+	// private FileStorageService storageService;
 
 	@GetMapping("inicio")
 	public String inicio() {
@@ -74,18 +78,20 @@ public class Controller {
 			return "add";
 		}
 		String fileName = nomeDocumento.getOriginalFilename();
-		estudante.setDocName(fileName);
-		estudante.setContent(nomeDocumento.getBytes());
-		estudante.setTamanho(nomeDocumento.getSize());
+		estudante.setDocName(fileName); // docName recebendo o nome do arquivo
+		estudante.setContent(nomeDocumento.getBytes()); // content recebe os bytes do arquivo
+		estudante.setTamanho(nomeDocumento.getSize()); // tamanho recebe o tamanho do arquivo
 		this.reposit.save(estudante);
 		return "redirect:aviso";
 	}
 
 	@GetMapping("/downloadfile/{id}")
-	public void downloadFile(@Param("id") Long id, Model model, HttpServletResponse response) throws IOException {
+	public void downloadFile(@Param("id") Long id, Model model, HttpServletResponse response, Estudante estudante)
+			throws IOException {
 		Optional<Estudante> temp = reposit.findById(id);
 		if (temp != null) {
-			Estudante estudante = temp.get();
+
+			estudante = temp.get();
 			response.setContentType("application/octet-stream");
 			String headerKey = "Content-Disposition";
 			String headerValue = "attachment; filename = " + estudante.getDocName();
@@ -136,14 +142,12 @@ public class Controller {
 
 			model.addAttribute("estudantes", teste.get());
 
-			
 			System.out.println("RESULTADO DA QUERY" + reposit.somahoras(matricula));
-			
+
 		}
 
 		return "pesquisaNome";
 	}
-
 
 	@GetMapping("aviso")
 	public String espera() {
@@ -160,8 +164,14 @@ public class Controller {
 	public String alterar(@PathVariable("id") long id, Model model, MultipartFile nomeDocumento) {
 		Estudante estudante = this.reposit.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException(" estudante invalido" + id));
+		
+		estudante.getAluno();
+		System.out.println(		estudante.getAluno());
+		estudante.getAtividadeCertificado();
+		estudante.getDocName();
+		estudante.getHoras();
+		
 		model.addAttribute("estudante", estudante);
-
 		return "update";
 	}
 
@@ -177,12 +187,18 @@ public class Controller {
 
 	@PostMapping("atualiza/{id}")
 	public String atualiza(@PathVariable("id") long id, MultipartFile nomeDocumento, @Validated Estudante estudante,
-			BindingResult result, Model model) {
+			BindingResult result, Model model) throws IOException {
 		if (result.hasErrors()) {
 			estudante.setId(id);
 
 			return "update";
 		}
+		/*String fileName = nomeDocumento.getOriginalFilename();
+		estudante.setDocName(fileName); // docName recebendo o nome do arquivo
+		estudante.setContent(nomeDocumento.getBytes()); // content recebe os bytes do arquivo
+		estudante.setTamanho(nomeDocumento.getSize()); // tamanho recebe o tamanho do arquivo*/
+		this.reposit.save(estudante);
+
 		reposit.save(estudante);
 		model.addAttribute("estudantes", this.reposit.findAll());
 		return "list";

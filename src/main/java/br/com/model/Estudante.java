@@ -20,6 +20,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "estudante")
 public class Estudante {
 
+	public Estudante(String fileName, String contentType, byte[] bytes) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

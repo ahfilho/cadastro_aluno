@@ -29,7 +29,7 @@
 		<div class="card-body">
 			<div class="col-md-10">
 				<form action="#"
-					th:action="@{/sadsadsadsdsadestudantes/atualiza/{id}(id=${estudante.id})}"
+					th:action="@{/estudantes/atualiza/{id}(id=${estudante.id})}"
 					th:object="${estudante}" method="post">
 					<div class="row">
 						<div class="form-group col-md-5">
@@ -41,8 +41,8 @@
 						<div class="form-group col-md-5">
 
 							<label for="matricula" class="col-for-label">Matricula</label> <input
-								type="text" th:field="*{matricula}" required
-								class="form-control" id="matricula">
+								type="text" th:field="*{matricula}" 
+								class="form-control" id="matricula" >
 
 						</div>
 						<div class="form-group col-md-5">
@@ -52,31 +52,33 @@
 							<span th:if="${#fields.hasErrors('aluno')}" th:errors="*{aluno}"
 								class="text-danger"></span>
 						</div>
+
 						<div class="form-group col-md-5">
 
-							<label for="docName" class="col-form-label">Certificado</label> <input
-								type="file" th:text="${estudante.docName}" name="docName"
-								id="docName" multiple="multiple" accept="file/pdf"> <input
-								type="reset" value="Apagar"> <br>
+						<label for="docName" class="col-form-label">Certificado</label> <br>
+						<input name="nomeDocumento"  th:field="*{docName}"  id="docName"
+							multiple="multiple" accept="file/pdf">
+
+
 						</div>
 						<div class="form-group col-md-5">
 
 							<label for="periodo" class="col-for-label">Semestre</label> <input
-								type="text" th:field="*{periodo}" required class="form-control"
-								id="periodo">
+								type="text" th:field="*{periodo}"  class="form-control"
+								id="periodo" >
 
 						</div>
 						<div class="form-group col-md-5">
 
 							<label for="atividadeCertificado" class="col-for-label">Atividade</label>
-							<input type="text" th:field="*{atividadeCertificado}" required
-								class="form-control" id="atividadeCertificado">
+							<input type="text" th:field="*{atividadeCertificado}" 
+								class="form-control" id="atividadeCertificado" >
 						</div>
 						<div class="form-group col-md-5">
 
 							<label for="horas" class="col-for-label">Horas </label> <input
-								type="text" name="horas" th:field="*{horas}" 
-								class="form-control" id="horas" >
+								type="text" name="horas" th:field="*{horas}"
+								class="form-control" id="horas">
 						</div>
 						<label for="horas" class="col-for-label">Status </label>
 						<div class="form-check">
